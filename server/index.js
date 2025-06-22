@@ -23,7 +23,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 const carRoutes = require('./routes/cars');
 app.use('/api/cars', carRoutes);
-
+  
 const bookingRoutes = require('./routes/bookings');
 app.use('/api/bookings', bookingRoutes);
 

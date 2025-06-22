@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import API from '../utils/axios';
+import DatePicker from 'react-datepicker';
+
 
 const CarDetails = () => {
   const { id } = useParams();
   const [car, setCar] = useState(null);
+  const [fromTime, setFromTime] = useState(null);
+  const [toTime, setToTime] = useState(null);
 
   useEffect(() => {
     const fetchCar = async () => {
@@ -19,6 +23,26 @@ const CarDetails = () => {
     fetchCar();
   }, [id]);
 
+  const handleBooking = async () => {
+    if (!fromTime || !toTime) {
+      alert('Please select from and to time');
+      return;
+    }
+
+    try {
+      await API.post('/bookings/book', {
+        carId: car._id,
+        fromTime,
+        toTime
+      });
+
+      alert('Car booked successfully!');
+    } catch (err) {
+      console.error(err);
+      alert(err.response?.data?.message || 'Booking failed');
+    }
+  };
+
   if (!car) return <p>Loading...</p>;
 
   return (
@@ -26,11 +50,30 @@ const CarDetails = () => {
       <h2>{car.name}</h2>
       <p>{car.description || 'No description'}</p>
       <p>Rent per hour: ₹{car.rentPerHour}</p>
-      <p>Seats: {car.seats || 'N/A'}</p>
-      <p>Fuel: {car.fuelType || 'N/A'}</p>
+      <br />
 
-      {/* Placeholder: We'll add date/time & booking in Day 8 */}
-      <p><b>Booking UI Coming Tomorrow...</b></p>
+      <div>
+        <label>From: </label>
+        <DatePicker
+          selected={fromTime}
+          onChange={(date) => setFromTime(date)}
+          showTimeSelect
+          timeFormat="HH:mm"
+          dateFormat="Pp"
+        />
+      </div>
+      <div>
+        <label>To: </label>
+        <DatePicker
+          selected={toTime}
+          onChange={(date) => setToTime(date)}
+          showTimeSelect
+          timeFormat="HH:mm"
+          dateFormat="Pp"
+        />
+      </div>
+      <br />
+      <button onClick={handleBooking}>Book Now</button>
     </div>
   );
 };

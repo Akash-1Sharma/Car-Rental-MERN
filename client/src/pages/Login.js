@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import API from '../utils/axios';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [form, setForm] = useState({ email: '', password: '' });
+  const navigate = useNavigate(); // ✅ Move useNavigate inside the component
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -14,6 +16,7 @@ const Login = () => {
       const res = await API.post('/auth/login', form);
       localStorage.setItem('token', res.data.token);
       alert('Login successful!');
+      navigate('/'); // ✅ This will redirect after login
     } catch (err) {
       alert(err.response?.data?.error || 'Login failed');
     }
