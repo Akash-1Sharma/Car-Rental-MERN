@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import API from '../utils/axios';
 import CarCard from '../components/CarCard';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const [cars, setCars] = useState([]);
@@ -23,6 +23,9 @@ const Home = () => {
 
   return (
     <div>
+      <Link to="/mybookings">
+  <button>My Bookings</button>
+</Link>
       <h2>Available Cars</h2>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
         {cars.map((car) => (

@@ -30,17 +30,20 @@ const CarDetails = () => {
     }
 
     try {
-      await API.post('/bookings/book', {
-        carId: car._id,
-        fromTime,
-        toTime
-      });
-
-      alert('Car booked successfully!');
-    } catch (err) {
-      console.error(err);
-      alert(err.response?.data?.message || 'Booking failed');
+  await API.post('/bookings/book', {
+    carId: car._id,
+    fromTime,
+    toTime
+  }, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`
     }
+  });
+
+  alert('Car booked successfully!');
+} catch (err) {
+  alert(err.response?.data?.message || 'Booking failed');
+}
   };
 
   if (!car) return <p>Loading...</p>;
