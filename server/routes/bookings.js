@@ -83,6 +83,32 @@ router.get('/all', protect, async (req, res) => {
 });
 
 
+// Cancel booking by updating status to 'cancelled'
+router.patch('/cancel/:id', protect, async (req, res) => {
+  try {
+    const booking = await Booking.findById(req.params.id);
+
+    if (!booking) return res.status(404).json({ message: 'Booking not found' });
+
+    // Optional: Check if the logged-in user is allowed to cancel this booking
+    if (booking.user.toString() !== req.user.id && !req.user.isAdmin) {
+      return res.status(403).json({ message: 'Unauthorized' });
+    }
+
+    booking.status = 'cancelled';
+    await booking.save();
+
+    res.json({ message: 'Booking marked as cancelled', booking });
+  } catch (err) {
+    res.status(500).json({ message: 'Something went wrong' });
+  }
+});
+
+
+
+
+
+
 
 
 module.exports = router;
