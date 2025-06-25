@@ -1,38 +1,44 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Navbar from '../components/Navbar';
+
 import API from '../utils/axios';
-import CarCard from '../components/CarCard';
-import { Link } from 'react-router-dom';
 
 const Home = () => {
   const [cars, setCars] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    console.log('Home component mounted');
-    const fetchCars = async () => {
-      try {
-        const res = await API.get('/cars');
-        console.log('Cars fetched:', res.data);
-        setCars(res.data);
-      } catch (err) {
-        console.error('Failed to load cars', err);
-      }
-    };
-
     fetchCars();
   }, []);
 
+  const fetchCars = async () => {
+    try {
+      const res = await API.get('/cars');
+      setCars(res.data);
+    } catch (err) {
+      console.error('Error fetching cars', err);
+      alert('Failed to load cars');
+    }
+  };
+
   return (
-    <div>
-      <Link to="/mybookings">
-  <button>My Bookings</button>
-</Link>
+    
+    <div style={{ padding: 20 }}>
+      <Navbar />
+    <div style={{ padding: 20 }}></div>
       <h2>Available Cars</h2>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
-        {cars.map((car) => (
-          <CarCard key={car._id} car={car} />
-          
-        ))}
-      </div>
+      {cars.length === 0 && <p>No cars available.</p>}
+      {cars.map((car) => (
+        <div key={car._id} style={{ border: '1px solid #aaa', padding: 10, marginBottom: 10 }}>
+          <img src={car.image} alt={car.name} style={{ width: '100%', maxHeight: 200, objectFit: 'cover' }} />
+          <h3>{car.name}</h3>
+          <p>Rent: ₹{car.rentPerHour} / hour</p>
+          <p>Fuel Type: {car.fuelType}</p>
+          <p>Capacity: {car.capacity} people</p>
+          <button onClick={() => navigate(`/car/${car._id}`)}>View Details</button>
+        </div>
+      ))}
     </div>
   );
 };

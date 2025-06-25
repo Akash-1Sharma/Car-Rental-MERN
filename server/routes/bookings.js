@@ -5,32 +5,6 @@ const protect = require('../middleware/auth');
 
 const router = express.Router();
 
-// Create a new booking
-// router.post('/book', protect, async (req, res) => {
-//   try {
-    //console.log('Booking request by:', req.user, req.body);
-//     const { carId, fromTime, toTime } = req.body;
-//     const car = await Car.findById(carId);
-//     const hours = Math.abs(new Date(toTime) - new Date(fromTime)) / 36e5;
-//     const amount = hours * car.rentPerHour;
-
-//     const booking = new Booking({
-//       car: carId,
-//       user: req.user.id,
-//       fromTime,
-//       toTime,
-//       totalHours: hours,
-//       totalAmount: amount
-//     });
-
-//     await booking.save();
-//     res.status(201).json({ message: 'Booking successful', booking });
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// });
-//here is /book to prevent duplicate booking i implemented this on day 5
-
 router.post('/book', protect, async (req, res) => {
   try {
     const { carId, fromTime, toTime } = req.body;
@@ -89,6 +63,26 @@ router.get('/my', protect, async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+
+// Get all bookings - Admin only
+// Get all bookings - Admin only
+router.get('/all', protect, async (req, res) => {
+  try {
+    if (!req.user.isAdmin) {
+      return res.status(403).json({ message: 'Admins only' });
+    }
+
+    const bookings = await Booking.find({})
+      .populate('car', 'name rentPerHour')   // ✅ correct field name
+      .populate('user', 'email');            // ✅ correct field name
+
+    res.json(bookings);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
 
 
 module.exports = router;

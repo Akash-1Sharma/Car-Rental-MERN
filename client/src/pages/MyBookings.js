@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import Navbar from '../components/Navbar';
 import API from '../utils/axios';
+
 
 const MyBookings = () => {
   const [bookings, setBookings] = useState([]);
@@ -27,6 +29,8 @@ const MyBookings = () => {
 
   return (
     <div style={{ padding: 20 }}>
+      <Navbar />
+    <div style={{ padding: 20 }}></div>
       <h2>My Bookings</h2>
       {bookings.map((b) => (
         <div key={b._id} style={{ border: '1px solid #ccc', margin: '1rem 0', padding: 10 }}>

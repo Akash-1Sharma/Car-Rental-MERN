@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import API from '../utils/axios';
 import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import Navbar from '../components/Navbar';
 
 
 const CarDetails = () => {
@@ -29,34 +31,58 @@ const CarDetails = () => {
       return;
     }
 
-    try {
-  await API.post('/bookings/book', {
-    carId: car._id,
-    fromTime,
-    toTime
-  }, {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem('token')}`
+    if (fromTime >= toTime) {
+      alert('End time must be after start time');
+      return;
     }
-  });
 
-  alert('Car booked successfully!');
-} catch (err) {
-  alert(err.response?.data?.message || 'Booking failed');
-}
+    try {
+      await API.post(
+        '/bookings/book',
+        {
+          carId: car._id,
+          fromTime,
+          toTime
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        }
+      );
+
+      alert('Car booked successfully!');
+    } catch (err) {
+      alert(err.response?.data?.message || 'Booking failed');
+    }
   };
 
   if (!car) return <p>Loading...</p>;
 
   return (
-    <div style={{ padding: 20 }}>
+    <div style={{ padding: 20, maxWidth: 600, margin: '0 auto' }}>
       <h2>{car.name}</h2>
-      <p>{car.description || 'No description'}</p>
-      <p>Rent per hour: ₹{car.rentPerHour}</p>
+      <Navbar />
+    <div style={{ padding: 20 }}></div>
+
+      {/* ✅ Car Image */}
+      {car.image && (
+        <img
+          src={car.image}
+          alt={car.name}
+          style={{ width: '100%', maxHeight: 300, objectFit: 'cover', marginBottom: 15 }}
+        />
+      )}
+
+      {/* ✅ Car Details */}
+      <p><strong>Rent per hour:</strong> ₹{car.rentPerHour}</p>
+      <p><strong>Capacity:</strong> {car.capacity} people</p>
+      <p><strong>Fuel Type:</strong> {car.fuelType}</p>
       <br />
 
+      {/* ✅ Booking Section */}
       <div>
-        <label>From: </label>
+        <label><strong>From: </strong></label>
         <DatePicker
           selected={fromTime}
           onChange={(date) => setFromTime(date)}
@@ -66,7 +92,7 @@ const CarDetails = () => {
         />
       </div>
       <div>
-        <label>To: </label>
+        <label><strong>To: </strong></label>
         <DatePicker
           selected={toTime}
           onChange={(date) => setToTime(date)}
