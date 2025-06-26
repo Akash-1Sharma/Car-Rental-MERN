@@ -14,7 +14,7 @@ const Navbar = () => {
   return (
     <nav style={styles.nav}>
       <div style={styles.left}>
-        <Link to="/home" style={styles.link}>Home</Link>
+        <Link to="/Home" style={styles.link}>Home</Link>
         <Link to="/mybookings" style={styles.link}>My Bookings</Link>
       </div>
       <button onClick={handleLogout} style={styles.logout}>Logout</button>

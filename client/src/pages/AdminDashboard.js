@@ -1,6 +1,9 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import API from '../utils/axios';
 import { saveAs } from 'file-saver';
+import { Link } from 'react-router-dom';
+import AdminNavbar from '../components/AdminNavbar';
+
 import Papa from 'papaparse';
 import {
   Chart as ChartJS,
@@ -146,41 +149,9 @@ const AdminDashboard = () => {
     }
   };
 
-  const handleAddCar = async () => {
-    try {
-      await API.post('/cars/add',
-        {
-          name: newCar.name,
-          image: newCar.image,
-          rentPerHour: Number(newCar.rentPerHour),
-          capacity: Number(newCar.capacity),
-          fuelType: newCar.fuelType
-        },
-        { headers }
-      );
-      alert('Car added!');
-      setNewCar({
-        name: '',
-        image: '',
-        rentPerHour: '',
-        capacity: '',
-        fuelType: ''
-      });
-      fetchCars();
-    } catch (err) {
-      alert(err.response?.data?.message || 'Failed to add car');
-    }
-  };
+  
 
-  const handleDeleteCar = async (id) => {
-    try {
-      await API.delete(`/cars/${id}`, { headers });
-      alert('Car deleted');
-      fetchCars();
-    } catch (err) {
-      alert('Failed to delete car');
-    }
-  };
+  
 
   const sortedFilteredBookings = () => {
     let filtered = bookings;
@@ -229,6 +200,7 @@ const AdminDashboard = () => {
 
   return (
     <div style={{ padding: 20 }}>
+      <AdminNavbar />
       <h2>Admin Dashboard</h2>
 
       <h3>Bookings</h3>
@@ -357,24 +329,7 @@ const AdminDashboard = () => {
         </div>
       </div>
 
-      {/* Cars Section */}
-      <h3 style={{ marginTop: 30 }}>Manage Cars</h3>
-      <div style={{ marginBottom: 20 }}>
-        <input type="text" placeholder="Car Name" value={newCar.name} onChange={(e) => setNewCar({ ...newCar, name: e.target.value })} />
-        <input type="text" placeholder="Image URL" value={newCar.image} onChange={(e) => setNewCar({ ...newCar, image: e.target.value })} />
-        <input type="number" placeholder="Rent Per Hour" value={newCar.rentPerHour} onChange={(e) => setNewCar({ ...newCar, rentPerHour: e.target.value })} />
-        <input type="number" placeholder="Capacity" value={newCar.capacity} onChange={(e) => setNewCar({ ...newCar, capacity: e.target.value })} />
-        <input type="text" placeholder="Fuel Type" value={newCar.fuelType} onChange={(e) => setNewCar({ ...newCar, fuelType: e.target.value })} />
-        <button onClick={handleAddCar}>Add Car</button>
-      </div>
-
-      {cars.map((car) => (
-        <div key={car._id} style={{ border: '1px solid #aaa', padding: 10, marginBottom: 10 }}>
-          <p><strong>{car.name}</strong></p>
-          <p>₹{car.rentPerHour}/hr</p>
-          <button onClick={() => handleDeleteCar(car._id)}>Delete</button>
-        </div>
-      ))}
+          
     </div>
   );
 };

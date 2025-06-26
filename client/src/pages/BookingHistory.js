@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Navbar from '../components/Navbar';
 import API from '../utils/axios';
 
 const BookingHistory = () => {

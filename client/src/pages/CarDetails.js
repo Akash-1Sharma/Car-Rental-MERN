@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import API from '../utils/axios';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import Navbar from '../components/Navbar';
 
 
 const CarDetails = () => {
@@ -62,7 +61,6 @@ const CarDetails = () => {
   return (
     <div style={{ padding: 20, maxWidth: 600, margin: '0 auto' }}>
       <h2>{car.name}</h2>
-      <Navbar />
     <div style={{ padding: 20 }}></div>
 
       {/* ✅ Car Image */}
