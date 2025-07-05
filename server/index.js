@@ -5,7 +5,14 @@ require('dotenv').config();
 
 const app = express();
 
-app.use(cors());
+// app.use(cors());
+app.use(
+  cors({
+    origin: ['https://car-rental-mern.vercel.app/'], // replace with your real Vercel URL
+    credentials: true
+  })
+);
+
 app.use(express.json());
 
 const authRoutes = require('./routes/auth');
