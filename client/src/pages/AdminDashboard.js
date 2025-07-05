@@ -262,7 +262,17 @@ const AdminDashboard = () => {
           key={booking._id}
           style={{ border: '1px solid #ccc', marginBottom: 10, padding: 10 }}
         >
-          <p><strong>Car:</strong> {booking.car?.name || 'N/A'}</p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+  {booking.car?.image && (
+    <img
+      src={booking.car.image}
+      alt={booking.car.name}
+      style={{ width: 80, height: 50, objectFit: 'cover', borderRadius: 4 }}
+    />
+  )}
+  <p><strong>Car:</strong> {booking.car?.name || 'N/A'}</p>
+</div>
+
           <p><strong>User:</strong> {booking.user?.email || 'N/A'}</p>
           <p><strong>From:</strong> {new Date(booking.fromTime).toLocaleString()}</p>
           <p><strong>To:</strong> {new Date(booking.toTime).toLocaleString()}</p>

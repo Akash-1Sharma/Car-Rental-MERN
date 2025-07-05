@@ -50,14 +50,18 @@ const ManageCars = () => {
   };
 
   const handleDeleteCar = async (id) => {
-    try {
-      await API.delete(`/cars/${id}`, { headers });
-      alert('Car deleted');
-      fetchCars();
-    } catch (err) {
-      alert('Failed to delete car');
-    }
-  };
+  const confirmDelete = window.confirm('Are you sure you want to delete this car? This action cannot be undone.');
+  if (!confirmDelete) return;
+
+  try {
+    await API.delete(`/cars/${id}`, { headers });
+    alert('Car deleted');
+    fetchCars();
+  } catch (err) {
+    alert('Failed to delete car');
+  }
+};
+
 
   useEffect(() => {
     fetchCars();
@@ -65,9 +69,9 @@ const ManageCars = () => {
 
   return (
     <div style={{ padding: 20 }}>
-      <AdminNavbar />
-
+      <AdminNavbar/>
       <h2>Manage Cars</h2>
+      
 
       <div style={{ marginBottom: 20 }}>
         <input type="text" placeholder="Car Name" value={newCar.name} onChange={(e) => setNewCar({ ...newCar, name: e.target.value })} />
@@ -80,11 +84,34 @@ const ManageCars = () => {
 
       {cars.map((car) => (
         <div key={car._id} style={{ border: '1px solid #aaa', padding: 10, marginBottom: 10 }}>
-          <p><strong>{car.name}</strong></p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+  <img
+    src={car.image}
+    alt={car.name}
+    style={{ width: 100, height: 60, objectFit: 'cover', borderRadius: 4 }}
+  />
+  <div>
+    <p><strong>{car.name}</strong></p>
+    <p>₹{car.rentPerHour}/hr</p>
+  </div>
+</div>
+
           <p>₹{car.rentPerHour}/hr</p>
           <button onClick={() => handleDeleteCar(car._id)}>Delete</button>
         </div>
       ))}
+      <button
+  onClick={() => window.location.href = '/admin'}
+  style={{
+    marginBottom: 20,
+    backgroundColor: '#eee',
+    border: '1px solid #ccc',
+    padding: '5px 10px',
+    cursor: 'pointer'
+  }}
+>
+  ← Back to Dashboard
+</button>
     </div>
   );
 };

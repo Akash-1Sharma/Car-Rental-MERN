@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import API from '../utils/axios';
 
+
 const Register = () => {
   const [form, setForm] = useState({ name: '', email: '', password: '' });
 
