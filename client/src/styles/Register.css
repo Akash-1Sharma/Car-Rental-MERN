@@ -1,0 +1,122 @@
+.register-container {
+  display: flex;
+  height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form-section {
+  flex: 7;
+  background-color: #F0F4F8 ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-section {
+  flex: 3;
+  background-color: #FFFFFF ;
+  position: relative;
+}
+
+.register-form {
+  background: #FFFFFF;
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  width: 300px;
+}
+
+.register-form h2 {
+  margin-bottom: 20px;
+  color: #898282;
+  text-align: center;
+}
+
+.register-form input {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 15px;
+  border: 1px solid #979090;
+  border-radius: 5px;
+  outline: none;
+}
+
+.register-form button {
+  width: 100%;
+  padding: 10px 12px;
+  background-color: #a4a29c;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.register-form button:hover {
+  background-color: #3d3b38;
+}
+
+.car-box {
+  position: absolute;
+  top: 50%;
+  left: -150px;
+  transform: translateY(-50%);
+  width: 300px;
+  height: 180px;
+  background-color: #333;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile responsive styling */
+@media screen and (max-width: 768px) {
+  .register-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .form-section {
+    flex: none;
+    width: 100%;
+    height: auto;
+    padding: 30px 0;
+  }
+
+  .image-section {
+    flex: none;
+    width: 100%;
+    height: 250px;
+    position: relative;
+  }  
+
+  .car-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 150px;
+  }
+}
+
+.car-image {
+  position: absolute;
+  top: 50%;
+  left: -150px;
+  transform: translateY(-50%);
+  width: 550px;
+  height: auto;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .car-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: auto;
+  }
+}
