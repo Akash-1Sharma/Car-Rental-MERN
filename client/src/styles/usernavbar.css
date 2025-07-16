@@ -1,0 +1,103 @@
+/* Navbar Container */
+.user-navbar {
+  background: #f7f7f7;
+  height: 64px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: Inter, sans-serif;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 50;
+}
+
+/* Logo */
+.user-navbar-logo {
+  font-weight: 900;
+  font-size: 20px;
+  color: #1a1a1a;
+}
+
+/* Hamburger icon (mobile only) */
+.user-navbar-hamburger {
+  font-size: 26px;
+  cursor: pointer;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .user-navbar-hamburger {
+    display: block;
+  }
+}
+
+/* Desktop menu box */
+.user-navbar-menu-container {
+  background-color: #eae8e4;
+  padding: 6px 20px;
+  border-radius: 8px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-navbar-menu-container a {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 12px;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 6px 12px;
+  border-radius: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.user-navbar-menu-container a:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Mobile dropdown */
+.user-navbar-mobile-menu {
+  position: absolute;
+  top: 64px;
+  left: 0;
+  right: 0;
+  background-color: #eae8e4;
+  padding: 12px 20px;
+  display: flex;
+  flex-direction: column;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  z-index: 100;
+}
+
+.user-navbar-mobile-menu a {
+  margin-bottom: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 12px;
+  color: #333;
+  padding: 6px 12px;
+  border-radius: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.user-navbar-mobile-menu a:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Logout Button */
+.user-navbar-logout {
+  background-color: #ff4d4f;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+}

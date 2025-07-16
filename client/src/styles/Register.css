@@ -19,25 +19,27 @@
 }
 
 .register-form {
-  background: #FFFFFF;
+  background: #f1e9e9;
   padding: 50px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-  width: 300px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.502);
+  width: 400px;
+  height: 450px;
 }
 
-.register-form h2 {
-  margin-bottom: 20px;
-  color: #898282;
+.register-form h1 {
+  margin-bottom: 60px;
+  color: #150e0e;
   text-align: center;
 }
 
 .register-form input {
+  background: rgb(243, 224, 224);
   display: block;
   width: 100%;
   padding: 10px 12px;
   margin-bottom: 15px;
-  border: 1px solid #979090;
+  border: 1px solid #bab1b1;
   border-radius: 5px;
   outline: none;
 }
@@ -45,7 +47,7 @@
 .register-form button {
   width: 100%;
   padding: 10px 12px;
-  background-color: #a4a29c;
+  background-color: #867951;
   color: #ffffff;
   border: none;
   border-radius: 5px;

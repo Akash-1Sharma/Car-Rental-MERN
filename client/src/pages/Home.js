@@ -25,8 +25,8 @@ const Home = () => {
   return (
     
     <div style={{ padding: 20 }}>
-      <Navbar />
-    <div style={{ padding: 20 }}></div>
+      <Navbar/>
+    
       <h2>Available Cars</h2>
       {cars.length === 0 && <p>No cars available.</p>}
       {cars.map((car) => (
@@ -39,7 +39,8 @@ const Home = () => {
           <button onClick={() => navigate(`/car/${car._id}`)}>View Details</button>
         </div>
       ))}
-    </div>
+    
+</div>
   );
 };
 

@@ -1,0 +1,110 @@
+.hero {
+  background: #333 url('./images/Back.jpg') center/cover;
+  color: rgba(255, 249, 249, 0.87);
+  padding: 100px 20px;
+  text-align: center;
+  height: 580px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.cta-button {   
+ display: inline-block;
+  padding: 12px 24px;
+  background: #effb91;
+  color: rgb(171, 21, 21);
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.cta-button:hover {
+  background: #182635;
+}
+
+.why-choose-us {
+  padding: 40px 20px;
+  background: #f7f7f7;
+  text-align: center;
+}
+
+.why-choose-us h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.why-choose-us ul {
+  list-style: none;
+  padding: 0;
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.feature-card {
+  background-color: white;
+  padding: 20px;
+  max-width: 250px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #007bff;
+}
+
+.feature-card p {
+  font-size: 0.95rem;
+  color: #673737;
+}
+
+.carousel {
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 20px;
+}
+
+.scrolling-images img {
+  height: 150px;
+  margin-right: 20px;
+  display: inline-block;
+}
+
+.about {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.footer {
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.footer nav a {
+  margin: 0 10px;
+  color: #ddd;
+  text-decoration: none;
+}

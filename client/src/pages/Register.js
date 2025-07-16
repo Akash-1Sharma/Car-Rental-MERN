@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import API from '../utils/axios';
 import '../styles/Register.css';
-import srtImage from '../images/SRT.webp';  // ✅ import your image here
+import srtImage from '../images/SRT.webp'; 
+import FrontNavbar from '../components/FrontNavbar';
+// ✅ import your image here
 
 const Register = () => {
   const [form, setForm] = useState({ name: '', email: '', password: '' });
@@ -21,10 +23,12 @@ const Register = () => {
   };
 
   return (
+    <div>
+    <FrontNavbar />
     <div className="register-container">
       <div className="form-section">
         <form onSubmit={handleSubmit} className="register-form">
-          <h2>Register</h2>
+          <h1>Register</h1>
           <input
             name="name"
             onChange={handleChange}
@@ -52,6 +56,7 @@ const Register = () => {
         <img src={srtImage} alt="SRT Car" className="car-image" /> 
       </div>
     </div>
+  </div>
   );
 };
 

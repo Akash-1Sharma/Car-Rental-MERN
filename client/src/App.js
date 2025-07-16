@@ -7,12 +7,13 @@ import CarDetails from './pages/CarDetails';
 import MyBookings from './pages/MyBookings';
 import AdminDashboard from './pages/AdminDashboard';
 import ManageCars from './pages/ManageCars';
+import Land from './pages/Landingpage';
 
 function App() {
   return (
     <BrowserRouter>
           <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/" element={<Navigate to="/land" />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
@@ -20,6 +21,7 @@ function App() {
         <Route path="/car/:id" element={<CarDetails />} />
         <Route path="/mybookings" element={<MyBookings />} />
         <Route path="/admin/manage-cars" element={<ManageCars />} />
+        <Route path='land' element={<Land />} />
   
       </Routes>
     </BrowserRouter>
