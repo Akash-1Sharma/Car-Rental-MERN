@@ -5,14 +5,14 @@ import FrontNavbar from '../components/FrontNavbar';
 
 const Land = () => {
   return (
-    <div>
+    <div style={{ padding: 20 }}>
         <FrontNavbar/>
     <div className="home-page">
       {/* Hero Section */}
       <section className="hero">
         <h1>Rent the Perfect Car for Your Journey</h1>
         <p>Affordable, Reliable, Convenient</p>
-        <Link to="/fleet" className="cta-button">View Our Fleet</Link>
+        <Link to="/Our-fleet" className="cta-button">View Our Fleet</Link>
       </section>
 
       {/* Why Choose Us */}
@@ -39,15 +39,20 @@ const Land = () => {
 </section>
 
       {/* Carousel / Running Images */}
-      <section className="carousel">
-        <h2>Our Cars</h2>
-        <div className="scrolling-images">
-          <img src="/images/car1.jpg" alt="Car 1" />
-          <img src="/images/car2.jpg" alt="Car 2" />
-          <img src="/images/car3.jpg" alt="Car 3" />
-          {/* Add more images */}
-        </div>
-      </section>
+    
+      <section className="car-carousel">
+  <h2>Explore Our Cars</h2>
+  <div className="marquee">
+    <div className="marquee-content">
+      <img src="https://media.architecturaldigest.com/photos/66a914f1a958d12e0cc94a8e/16:9/w_2992,h_1683,c_limit/DSC_5903.jpg" alt="Car 1" />
+      <img src="https://media.architecturaldigest.com/photos/66a914f1a958d12e0cc94a8e/16:9/w_2992,h_1683,c_limit/DSC_5903.jpg" alt="Car 2" />
+      <img src="https://media.architecturaldigest.com/photos/66a914f1a958d12e0cc94a8e/16:9/w_2992,h_1683,c_limit/DSC_5903.jpg" alt="Car 3" />
+      <img src="https://media.architecturaldigest.com/photos/66a914f1a958d12e0cc94a8e/16:9/w_2992,h_1683,c_limit/DSC_5903.jpg" alt="Car 4" />
+      <img src="https://media.architecturaldigest.com/photos/66a914f1a958d12e0cc94a8e/16:9/w_2992,h_1683,c_limit/DSC_5903.jpg" alt="Car 5" />
+    </div>
+  </div>
+</section>
+
 
       {/* About Us */}
       <section className="about">
@@ -57,15 +62,35 @@ const Land = () => {
 
       {/* Footer */}
       <footer className="footer">
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/fleet">Our Fleet</Link>
-          <Link to="/offers">Offers</Link>
-          <Link to="/offices">Our Offices</Link>
-          <Link to="/contact">Contact & About</Link>
-        </nav>
-        <p>&copy; 2025 Car Rental Service. All rights reserved.</p>
-      </footer>
+  <div className="footer-content">
+    <div className="footer-brand">
+      <h3>CarRentalPro</h3>
+      <p>Your trusted car rental partner. Premium cars. Great service. Best prices.</p>
+    </div>
+
+    <div className="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/our-fleet">Our Fleet</a></li>
+        <li><a href="/offers">Offers</a></li>
+        <li><a href="/addresses">Our Offices</a></li>
+        <li><a href="/contact">Contact & About</a></li>
+      </ul>
+    </div>
+
+    <div className="footer-contact">
+      <h4>Contact Us</h4>
+      <p>Email: support@carrentalpro.com</p>
+      <p>Phone: +91-9876543210</p>
+      <p>Address: Main Street, Your City</p>
+    </div>
+  </div>
+
+  <div className="footer-bottom">
+    <p>© {new Date().getFullYear()} CarRentalPro. All rights reserved.</p>
+  </div>
+</footer>
+
     </div>
     </div>
   );

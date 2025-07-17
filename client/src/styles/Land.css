@@ -1,9 +1,15 @@
+body{
+    background-color: #f0ebeb;
+}
 .hero {
+  margin-top: 10px;
+  margin-bottom: 10px;
   background: #333 url('./images/Back.jpg') center/cover;
   color: rgba(255, 249, 249, 0.87);
   padding: 100px 20px;
   text-align: center;
   height: 580px;
+  box-shadow: 0 0 10px rgba(34, 27, 27, 0.83);
 }
 
 .hero h1 {
@@ -35,11 +41,14 @@
   padding: 40px 20px;
   background: #f7f7f7;
   text-align: center;
+  box-shadow: 0 0 10px rgba(34, 27, 27, 0.83);
+  height: 400px;
+  
 }
 
 .why-choose-us h2 {
   font-size: 2rem;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 
 .why-choose-us ul {
@@ -48,13 +57,18 @@
 }
 
 .features {
+    box-shadow: 0 0 10px rgba(34, 27, 27, 0.83);
+    
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 30px;
+  padding-top: 10px;
+  padding-bottom: 5px;
 }
 
 .feature-card {
+  
   background-color: white;
   padding: 20px;
   max-width: 250px;
@@ -65,6 +79,8 @@
 }
 
 .feature-card:hover {
+    box-shadow: 0 0 10px rgba(34, 27, 27, 0.83);
+
   transform: translateY(-5px);
 }
 
@@ -79,17 +95,56 @@
   color: #673737;
 }
 
-.carousel {
-  overflow-x: auto;
-  white-space: nowrap;
-  padding: 20px;
+.car-carousel {
+  padding: 60px 20px;
+  background-color: #fff;
+  text-align: center;
+  margin-top: 10px;
+      box-shadow: 0 0 10px rgba(34, 27, 27, 0.83);
+
 }
 
-.scrolling-images img {
-  height: 150px;
-  margin-right: 20px;
-  display: inline-block;
+.car-carousel h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
 }
+
+.marquee {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+}
+
+.marquee-content {
+  display: flex;
+  animation: scroll 10s linear infinite;
+}
+
+.marquee-content img {
+  max-height: 150px;
+  margin: 0 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.marquee-content:hover{
+    animation-play-state: paused;
+
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+
 
 .about {
   padding: 40px 20px;
@@ -97,14 +152,46 @@
 }
 
 .footer {
-  background: #222;
-  color: white;
-  text-align: center;
-  padding: 20px;
+  background-color: #222;
+  color: #fff;
+  padding: 40px 20px;
 }
 
-.footer nav a {
-  margin: 0 10px;
-  color: #ddd;
-  text-decoration: none;
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
 }
+
+.footer-brand, .footer-links, .footer-contact {
+  flex: 1 1 250px;
+  margin: 10px;
+}
+
+.footer h3, .footer h4 {
+  color: #f9b115;
+  margin-bottom: 10px;
+}
+
+.footer p, .footer a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.footer a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #444;
+  padding-top: 20px;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+

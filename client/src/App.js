@@ -8,6 +8,14 @@ import MyBookings from './pages/MyBookings';
 import AdminDashboard from './pages/AdminDashboard';
 import ManageCars from './pages/ManageCars';
 import Land from './pages/Landingpage';
+import OurFleet from './pages/OurFleet';
+import Offers from './pages/Offers';
+import Offices from './pages/Offices';
+import ContactAbout from './pages/ContactAbout';
+
+
+
+
 
 function App() {
   return (
@@ -22,6 +30,13 @@ function App() {
         <Route path="/mybookings" element={<MyBookings />} />
         <Route path="/admin/manage-cars" element={<ManageCars />} />
         <Route path='land' element={<Land />} />
+        <Route path="/our-fleet" element={<OurFleet />} />
+        <Route path="/offers" element={<Offers />} />
+        <Route path="/offices" element={<Offices />} />
+        <Route path="/contact" element={<ContactAbout />} />
+
+
+
   
       </Routes>
     </BrowserRouter>

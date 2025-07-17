@@ -21,11 +21,11 @@ const FrontNavbar = () => {
 
       <div className={`navbar-menu-container ${menuOpen ? 'open' : ''}`}>
         <Link to="/land">Home</Link>
-        <Link to="/login">Browse Cars</Link>
-        <Link to="/services">Services</Link>
+        <Link to="/Our-Fleet">Browse Cars</Link>
+        
         <Link to="/offers">Offers</Link>
-        <Link to="/locations">Locations</Link>
-        <Link to="/about">About</Link>
+        <Link to="/offices">Locations</Link>
+        <Link to="/contact">About</Link>
       </div>
 
       <div className="navbar-right">

@@ -45,14 +45,27 @@ router.post('/book', protect, async (req, res) => {
 
 
 // Get all bookings (admin-only, optional filter later)
-router.get('/', protect, async (req, res) => {
+// router.get('/', protect, async (req, res) => {
+//   try {
+//     const bookings = await Booking.find().populate('car').populate('user');
+//     res.json(bookings);
+//   } catch (err) {
+//     res.status(500).json({ error: err.message });
+//   }
+// });
+
+// Public routes (no auth needed)
+router.get('/', async (req, res) => {               // GET /api/bookings
   try {
-    const bookings = await Booking.find().populate('car').populate('user');
+    const bookings = await Booking.find()
+      .populate('car', 'name image rentPerHour capacity fuelType')
+      .populate('user', 'name email');
     res.json(bookings);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
+
 
 // Get bookings of logged-in user
 router.get('/my', protect, async (req, res) => {

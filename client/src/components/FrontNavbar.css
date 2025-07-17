@@ -9,7 +9,7 @@
   padding: 0 32px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
   font-family: 'Inter', sans-serif;
-  position: relative;
+  position:relative;
   z-index: 100;
 }
 
