@@ -79,21 +79,41 @@ router.get('/my', protect, async (req, res) => {
 
 // Get all bookings - Admin only
 // Get all bookings - Admin only
+// router.get('/all', protect, async (req, res) => {
+//   try {
+//     if (!req.user.isAdmin) {
+//       return res.status(403).json({ message: 'Admins only' });
+//     }
+
+//     const bookings = await Booking.find({})
+//       .populate('car', 'name rentPerHour')   // ✅ correct field name
+//       .populate('user', 'email');            // ✅ correct field name
+
+//     res.json(bookings);
+//   } catch (err) {
+//     res.status(500).json({ error: err.message });
+//   }
+// });
+
 router.get('/all', protect, async (req, res) => {
   try {
+    console.log('🔍 Requesting user:', req.user);  // 🧪 Log user data
+
     if (!req.user.isAdmin) {
       return res.status(403).json({ message: 'Admins only' });
     }
 
     const bookings = await Booking.find({})
-      .populate('car', 'name rentPerHour')   // ✅ correct field name
-      .populate('user', 'email');            // ✅ correct field name
+      .populate('car', 'name rentPerHour')
+      .populate('user', 'email');
 
     res.json(bookings);
   } catch (err) {
+    console.error('❌ Error in /all route:', err);  // Better error log
     res.status(500).json({ error: err.message });
   }
 });
+
 
 
 // Cancel booking by updating status to 'cancelled'

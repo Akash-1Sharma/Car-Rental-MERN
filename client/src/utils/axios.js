@@ -17,16 +17,32 @@ import axios from 'axios';
 // export default API;
 
 
+// const API = axios.create({
+//   baseURL: process.env.REACT_APP_API_URL
+// });
+
+// // Add token automatically if exists
+// API.interceptors.request.use((config) => {
+//   const token = localStorage.getItem('token');
+//   if (token) config.headers.Authorization = token;
+//   return config;
+// });
+
+// export default API;
+
+
 const API = axios.create({
   baseURL: process.env.REACT_APP_API_URL
 });
 
-// Add token automatically if exists
 API.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
-  if (token) config.headers.Authorization = token;
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;  // 🔧 Fixed line
+  }
   return config;
 });
+
 
 export default API;
 
