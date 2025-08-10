@@ -12,6 +12,10 @@ body{
   box-shadow: 0 0 10px rgba(34, 27, 27, 0.83);
 }
 
+.hero:hover {
+transform: translateY(-2px) scale(1.01) rotateX(-1deg);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);}
+
 .hero h1 {
   font-size: 2.5rem;
   margin-bottom: 20px;
@@ -100,8 +104,7 @@ body{
   background-color: #fff;
   text-align: center;
   margin-top: 10px;
-      box-shadow: 0 0 10px rgba(34, 27, 27, 0.83);
-
+  
 }
 
 .car-carousel h2 {

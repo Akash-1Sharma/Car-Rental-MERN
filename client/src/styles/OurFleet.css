@@ -1,4 +1,4 @@
-.fleet-page {
+/* .fleet-page {
   padding: 30px 20px;
   max-width: 1200px;
   margin: auto;
@@ -53,4 +53,100 @@
 .fleet-card p {
   margin: 4px 0;
   color: #666;
+} */
+
+
+
+/* ---------- FLEET PAGE (new look) ---------- */
+.fleet-page {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+
+.fleet-page h2 {
+  font-size: 2.2rem;
+  color: #f9b115;
+  margin-bottom: 12px;
+  letter-spacing: .02em;
+}
+
+.fleet-page > p {
+  font-size: 1.15rem;
+  color: #555;
+  margin-bottom: 50px;
+}
+
+/* grid container */
+.fleet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 30px;
+  justify-content: center;
+}
+
+/* individual card */
+.fleet-card {
+  background: rgba(255, 255, 255, .55);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, .3);
+  border-radius: 12px;
+  padding: 0 0 20px;
+  overflow: hidden;
+  transition: transform .35s, box-shadow .35s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+}
+
+.fleet-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .15);
+}
+
+/* image */
+.fleet-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+/* car name */
+.fleet-card h3 {
+  font-size: 1.25rem;
+  margin: 16px 0 6px;
+  color: #222;
+}
+
+/* price tag */
+.fleet-card p:nth-of-type(1) {
+  font-weight: 700;
+  color: #f9b115;
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+}
+
+/* capacity / fuel */
+.fleet-card p {
+  margin: 3px 0;
+  font-size: .9rem;
+  color: #444;
+}
+
+/* subtle divider */
+.fleet-card::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, #007bff, #f9b115);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* responsive tweak */
+@media (max-width: 600px) {
+  .fleet-grid {
+    grid-template-columns: 1fr;
+  }
 }
